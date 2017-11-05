@@ -1,0 +1,48 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+ScreenManagement:
+    transition: FadeTransition()
+    Login:
+    Game:
+
+<Login>:
+    name:'login'
+    Logincheck:
+    Label:
+        id:l1
+        text:'Username:'
+        text_size: self.size
+        pos_hint:{'right':0.5, 'top':0.53}
+        size_hint: 0.1, 0.05
+    Label:
+        id:l2
+        text:'Password:'
+        text_size: self.size
+        pos_hint:{'right':0.5,'top':0.47}
+        size_hint: 0.1, 0.05
+    TextInput:
+        id:t1
+        pos: l1.x + l1.width + 5, l1.y
+        size_hint: 0.2, 0.05
+        font_size:15
+    TextInput:
+        id:t2
+        pos: l2.x + l2.width + 5, l2.y
+        size_hint: 0.2, 0.05
+        font_size:15
+    Button:
+        on_release:check(t1.text, t2.text)
+        text:'Login'
+        font_size: 30
+        pos_hint:{'right':0.95, 'top': 0.15}
+        size_hint: 0.2, 0.075
+
+
+<Game>:
+    name:'game'
+    Button:
+        on_release: app.root.current='login'
+        text:'Back to login'
+        font_size: 25
+        pos_hint: {'left':1, 'top':1}
+        size_hint: 0.2, 0.075
